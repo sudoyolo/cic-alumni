@@ -1,1 +1,1 @@
-# cic-alumni
+# CIC Alumni Page
