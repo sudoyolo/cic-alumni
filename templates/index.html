@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
     <title>Meet Your Alumnis</title>
 </head>
 <body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#">Sign In</a></li>
+            <li class="nav-item"><a href="#">Home</a></li>
+        </ul>
+    </div>
+    <div class="heading">
+        <h1>Connect With Your Alumni</h1>
+    </div>
+    <div class="slideshow">
+        <div class="slide-track">
+            <div class="slide"><img src="{{url_for('static', filename='1s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='2s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='3s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='4s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='5s.png')}}" alt="Sample"></div>
+
+            <div class="slide"><img src="{{url_for('static', filename='1s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='2s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='3s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='4s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='5s.png')}}" alt="Sample"></div>
+        </div>
+    </div>
+    <div class="slideshow">
+        <div class="slide-track-2">
+            <div class="slide"><img src="{{url_for('static', filename='1s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='2s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='3s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='4s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='5s.png')}}" alt="Sample"></div>
+
+            <div class="slide"><img src="{{url_for('static', filename='1s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='2s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='3s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='4s.jpg')}}" alt="Sample"></div>
+            <div class="slide"><img src="{{url_for('static', filename='5s.png')}}" alt="Sample"></div>
+        </div>
+    </div>
+    <div class="heading">
+        <h2>Seacrh Your Alumni</h2>
+    </div>
     
 </body>
 </html>
