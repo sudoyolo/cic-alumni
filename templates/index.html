@@ -11,8 +11,8 @@
     <div class="navbar">
         <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
         <ul class="nav-list">
-            <li class="nav-item"><a href="#">Sign In</a></li>
-            <li class="nav-item"><a href="#">Home</a></li>
+            <li class="nav-item"><a href="/SignIn">Sign In</a></li>
+            <li class="nav-item"><a href="https://cic.du.ac.in/">CIC Home</a></li>
         </ul>
     </div>
     <div class="heading">
@@ -51,6 +51,41 @@
     <div class="heading">
         <h2>Seacrh Your Alumni</h2>
     </div>
-    
+    <form action="">
+        <div class="search-tab">
+            <div class="form-child">
+                <label for="name">Name</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-child">
+                <label for="course">Course </label>
+                <select name="course" id="course" required>
+                    <option value="none" selected disabled hidden>Select</option>
+                    <option value="Btech">B. Tech IT and MI</option>
+                    <option value="BA">BA Honours</option>
+                    <option value="MME">Masters in Mathematics</option>
+                </select>
+            </div>
+            <div class="form-child">
+                <label for="year">Batch Year </label>
+                <select name="year" id="year" required>
+                    <option value="none" selected disabled hidden>Select</option>
+                    <option value="1">2011</option>
+                    <option value="2">2012</option>
+                </select>
+            </div>
+            <button class="submit">SEARCH</button>
+        </div>
+        <div class="about-cic">
+            <h2>About CIC</h2>
+            <p>
+                The Cluster Innovation Centre - or CIC as it is popularly know - has been designed to seek and 
+                derive innovations from industrial clusters, village clusters, slum cluster and educational clusters. 
+                It is an endeavour to harness the passion and dedication of bright young minds with some of the major 
+                challenges of india and civil society. We strive to stream relevant ideas and programmes stemming from 
+                the above mandate into its learning and research programmes.
+            </p>
+        </div>
+    </form>
 </body>
 </html>
