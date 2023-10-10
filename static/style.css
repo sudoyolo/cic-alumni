@@ -124,6 +124,63 @@ h1{
     top: 0;
     transform: rotateZ(180deg);
 }
+.search-tab{
+    width: 95%;
+    display: flex;
+    margin-left: 2.5%;     
+    height: 10vh;
+    place-items: center;
+}
+.form-child{
+    width: 25%;
+    aspect-ratio: 6/1;
+    margin-left: 2.5%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.form-child input{
+    width: 70%;
+    background-color: black;
+    color: white;
+}
+.form-child label{
+    font-size: 2.5vh;
+}
+select{
+    width: 70%;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    font-size: 2.5vh;
+}
+select option{
+    background-color: black;
+    color: white;
+    font-size: 2.5vh;
+}
+.submit{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    margin-left: 2.5%;
+    font-size: 2.5vh;
+}
+.about-cic{
+    width: 100%;
+    height: max-content;
+    background-color: #652b7c;
+}
+.about-cic h2{
+    font-size: 5vh;
+    text-align: center;
+    color: white;
+}
+.about-cic p{
+    color: white;
+    font-size: 2.5vh;
+    padding: 5%;
+}
 
 @media screen and (max-width: 800px){
     .navbar{
@@ -140,11 +197,53 @@ h1{
         margin: 15px 30px;
         text-decoration: none;
     }
-    h1{
-        font-size: 30px;
-        text-align: center;
-    }
     .slideshow{
-        
+        height: 200px;
+    }
+    .slide-track{
+        display: flex;
+        width: calc(300px * 10);
+        animation: scroll2 10s linear infinite;
+    }
+    .slide-track-2{
+        display: flex;
+        width: calc(300px * 10);
+        animation: scroll1 10s linear infinite;
+    }
+    @keyframes scroll1 {
+        0% {
+        transform: translateX(0);
+        }
+        100% {
+        transform: translateX(calc(-300px * 5));
+        }
+    }
+    @keyframes scroll2 {
+        0% {
+        transform: translateX(calc(-300px*5));
+        }
+        100% {
+        transform: translateX(0);
+        }
+    }
+    .slide{
+        height: 150px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        perspective: 100px;
+    }
+}
+@media screen and (max-width: 600px){
+    .search-tab{
+        height: 20vh;
+        display: grid;
+        gap:20px 20px;
+        grid-template-columns: auto auto;
+    }
+    .form-child{
+        width: calc(40vw);
+        margin-left: calc(3.34vw);
     }
 }
