@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <title>Meet Your Alumnis</title>
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/SignIn">Sign In</a></li>
+            <li class="nav-item"><a href="https://cic.du.ac.in/">CIC Home</a></li>
+        </ul>
+    </div>
+    
+</body>
+</html>
