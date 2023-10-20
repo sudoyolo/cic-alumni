@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <title>CIC CommUnity - Sign In</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/SignIn">Sign In</a></li>
+            <li class="nav-item"><a href="/">Home</a></li>
+        </ul>
+    </div>
+    <div class="login-div">
+        <div class="login-det-holder">
+            <form action="/Validate_OTP" method="POST">
+                <div class="login-child">
+                    <label for="name">NAME</label>
+                    <input type="text" id="name" name="InpName">
+                </div>
+                <div class="login-child">
+                    <label for="otp">OTP</label>
+                    <input type="text" id="'otp" name="OTP">
+                </div> 
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
