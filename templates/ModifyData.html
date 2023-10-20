@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <title>CIC CommUnity - Sign In</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/SignIn">Sign In</a></li>
+            <li class="nav-item"><a href="/">Home</a></li>
+        </ul>
+    </div>
+    <div class="modif-data">
+        <form action="/UpdateData" method="post">
+            <div class="modif-form-child">
+                <input type="text" name="m_name" value="{{ prev_data.NAME }}" disabled>
+            </div>
+            <div class="modif-form-child">
+                <input type="text" name="course" value="{{ prev_data.EMAIL }}" disabled>
+            </div>
+            <div class="modif-form-child">
+                <input type="number" name="myear" id="year" value="{{ b_year }}" disabled>
+            </div>
+            <div class="modif-form-child">
+                <input type="text" name="job_title" value="{{ prev_data.JOB }}">
+            </div>
+            <div class="modif-form-child">
+                <input type="text" name="location" value="{{ prev_data.LOCATION }}">
+            </div>
+            <div class="modif-form-child">
+                <input type="text" name="linkedin" value="{{ prev_data.LINKEDIN }}">
+            </div>
+            <div class="modif-form-child">
+                <input type="text" name="website" value="{{ prev_data.WEBSITE }}">
+            </div>
+            <div class="modif-form-child">
+                <input type="email" name="m_email" value="{{ prev_data.EMAIL }}">
+            </div>
+            <button class="update" type="submit">UPDATE</button>
+        </form>
+    </div>
+</body>
+</html>
