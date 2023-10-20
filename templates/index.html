@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
     <script src="{{url_for('static', filename='script.js')}}"></script>
-    <title>Meet Your Alumnis</title>
+    <title>CIC CommUnity - Alumni Page</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
 </head>
 <body>
     <div class="navbar">
@@ -13,6 +15,7 @@
         <ul class="nav-list">
             <li class="nav-item"><a href="/SignIn">Sign In</a></li>
             <li class="nav-item"><a href="https://cic.du.ac.in/">CIC Home</a></li>
+            <li class="nav-item"><a href="/Open_Modif">Modif</a></li>
         </ul>
     </div>
     <div class="heading">
@@ -49,19 +52,19 @@
         </div>
     </div>
     <div class="heading">
-        <h2>Seacrh Your Alumni</h2>
+        <h2>Search Your Alumni</h2>
     </div>
-    <form action="">
+    <form action="/SearchAlumni", method="POST">
         <div class="search-tab">
             <div class="form-child">
                 <label for="name">Name</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="Alname">
             </div>
             <div class="form-child">
                 <label for="course">Course </label>
                 <select name="course" id="course" required>
                     <option value="none" selected disabled hidden>Select</option>
-                    <option value="Btech">B. Tech IT and MI</option>
+                    <option value="BTECH">B.Tech IT & MI</option>
                     <option value="BA">BA Honours</option>
                     <option value="MME">Masters in Mathematics</option>
                 </select>
@@ -70,13 +73,39 @@
                 <label for="year">Batch Year </label>
                 <select name="year" id="year" required>
                     <option value="none" selected disabled hidden>Select</option>
-                    <option value="1">2011</option>
-                    <option value="2">2012</option>
+                    {% for opt in slct_yr %}
+                    <option value="{{ opt }}">{{ opt }}</option>
+                    {% endfor %}
                 </select>
             </div>
-            <button class="submit">SEARCH</button>
+            <button class="submit" type="submit">SEARCH</button>
+        </form>
         </div>
-    </form>
+    <div class="show-rec">
+        {% if rec|length==0  %}
+        <p>Nothing to disp</p>
+        {% else %}
+    
+        {% for inp in rec %}
+        <div class="placard">
+            <div class="Name-holder">
+                <p class="name">{{ inp['NAME'] }}</p>
+                <p class="occup">{{ inp['JOB'] }}</p>
+            </div>
+            <div class="details">
+                <p class="det-b">Organisation/Company <i class="fa fa-industry" aria-hidden="true"></i></p>
+                <p class="det">{{inp['ORGANISATION']}}</p>
+                <p class="det-b">Location <i class="fa fa-map-marker" aria-hidden="true"></i></p>
+                <p class="det">{{ inp['LOCATION'] }}</p>
+                <p class="det-b">E-mail ID <i class="fa fa-envelope" aria-hidden="true"></i></p>
+                <p class="det">{{ inp['EMAIL'] }}</p>
+                <p class="det-b">LinkedIn Profile <i class="fa fa-linkedin-square" aria-hidden="true"></i></p>
+                <p class="det"><a href="https://{{ inp['LINKEDIN'] }}" target="_blank">{{ inp['LINKEDIN'] }}</a></p>
+            </div>
+        </div>
+            {% endfor %}
+        {% endif %}
+    </div>
         <div class="about-cic">
             <h2>About CIC</h2>
             <p>

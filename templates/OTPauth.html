@@ -18,25 +18,16 @@
     </div>
     <div class="login-div">
         <div class="login-det-holder">
-            <form action="/LoginAlumni" method="POST">
+            <form action="/Validate_OTP" method="POST">
                 <div class="login-child">
                     <label for="name">NAME</label>
                     <input type="text" id="name" name="InpName">
                 </div>
                 <div class="login-child">
-                    <label for="mail">E-MAIL</label>
-                    <input type="email" id="mail" name="InpEmail">
-                </div>   
-                <div>
-                    <label for="year">Batch Year </label>
-                    <select name="year" id="year" required>
-                        <option value="none" selected disabled hidden>Select</option>
-                        {% for opt in slct_yr %}
-                        <option value="{{ opt }}">{{ opt }}</option>
-                        {% endfor %}
-                    </select>
+                    <label for="otp">OTP</label>
+                    <input type="text" id="'otp" name="OTP">
                 </div> 
-                <button type="submit">SEND OTP</button>
+                <button type="submit">LOGIN</button>
             </form>
         </div>
     </div>
