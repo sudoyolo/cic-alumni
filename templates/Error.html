@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css' )}}" rel="stylesheet">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+    <title>CIC CommUnity - Sign In</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="/">Home</a></li>
+        </ul>
+    </div>
+    <div class="error-holder">
+        {% if error_code == "1" %}
+        <h2>Failed to authenticate login. Provided e-mail not found. Try loging in again or contact the developement team.</h2>
+        <form action="/SignIn">
+            <button class="error-button">Try Again</button>
+        </form>
+        {% elif error_code == "2" %}
+        <h2>Page Unresponsive. Try again later</h2>
+        {% elif error_code == "3" %}
+        <h2>Failed to authenticate login. OTP verification failed. Try loging in again or contact the developement team.</h2>
+        <form action="/SignIn">
+            <button class="error-button">Continue</button>
+        </form>
+        {% elif error_code == "4" %}
+        <h2>Unable to update profile. Server authentication failed. Try loging in again or contact the developement team.</h2>
+        <form action="/">
+            <button class="error-button">Continue</button>
+        </form>
+        {% else %}
+        <h2>Unknown server error. Try again later.</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
