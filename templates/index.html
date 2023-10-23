@@ -63,11 +63,11 @@
     <form action="/SearchAlumni", method="POST">
         <div class="search-tab">
             <div class="form-child">
-                <label for="name">Name</label>
+                <label for="name">Name</label> &nbsp; &nbsp;
                 <input type="text" id="name" name="Alname">
             </div>
             <div class="form-child">
-                <label for="course">Course </label>
+                <label for="course">Course </label> &nbsp; &nbsp;
                 <select name="course" id="course" required>
                     <option value="none" selected disabled hidden>Select</option>
                     <option value="BTECH">B.Tech IT & MI</option>
@@ -76,7 +76,7 @@
                 </select>
             </div>
             <div class="form-child">
-                <label for="year">Batch Year </label>
+                <label for="year">Batch Year </label>&nbsp;
                 <select name="year" id="year" required>
                     <option value="none" selected disabled hidden>Select</option>
                     {% for opt in slct_yr %}
