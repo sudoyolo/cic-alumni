@@ -20,23 +20,20 @@
         <div class="login-det-holder">
             <form action="/LoginAlumni" method="POST">
                 <div class="login-child">
-                    <label for="name">NAME</label>
-                    <input type="text" id="name" name="InpName">
+                    <input type="text" id="name" name="InpName" placeholder="NAME">
                 </div>
                 <div class="login-child">
-                    <label for="mail">E-MAIL</label>
-                    <input type="email" id="mail" name="InpEmail">
+                    <input type="email" id="mail" name="InpEmail" placeholder="EMAIL ID">
                 </div>   
-                <div>
-                    <label for="year">Batch Year </label>
+                <div class="login-child">
                     <select name="year" id="year" required>
-                        <option value="none" selected disabled hidden>Select</option>
+                        <option value="none" selected disabled hidden>BATCH</option>
                         {% for opt in slct_yr %}
                         <option value="{{ opt }}">{{ opt }}</option>
                         {% endfor %}
                     </select>
                 </div> 
-                <button type="submit">SEND OTP</button>
+                <button type="submit" class = "Otp_auth">SEND OTP</button>
             </form>
         </div>
     </div>

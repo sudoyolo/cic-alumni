@@ -9,13 +9,20 @@
     <title>CIC CommUnity - Alumni Page</title>
     <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
 </head>
-<body>
+<body onload="DataModified()">
+    <script>
+        function DataModified(){
+                if("{{ update_confirmed }}" == "True"){
+                    alert('Your data has been saved succesfully!');
+                    }
+                }
+    </script>
     <div class="navbar">
         <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
         <ul class="nav-list">
             <li class="nav-item"><a href="/SignIn">Sign In</a></li>
             <li class="nav-item"><a href="https://cic.du.ac.in/">CIC Home</a></li>
-            <li class="nav-item"><a href="/Open_Modif">Modif</a></li>
+            <li class="nav-item"><a href="/Load_error">Error</a></li>
         </ul>
     </div>
     <div class="heading">
@@ -83,7 +90,7 @@
         </div>
     <div class="show-rec">
         {% if rec|length==0  %}
-        <p>Nothing to disp</p>
+        <p>Find your Almuni Now...</p>
         {% else %}
     
         {% for inp in rec %}
