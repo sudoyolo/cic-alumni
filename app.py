@@ -2,9 +2,20 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 import random
 import smtplib
+import json
 
 app = Flask(__name__)
-uri = "mongodb+srv://alumadmin:alumkey@cluster0.pyebiiy.mongodb.net/?retryWrites=true&w=majority"
+file = open('config.json')
+Login_creds = json.load(file)
+
+MongoDB_ID = Login_creds['db_login']
+MongoDB_Pass = Login_creds['db_pass']
+ComUnity_ID = Login_creds['mail_id']
+ComUnity_Pass = Login_creds['mail_pass']
+
+uri = f'mongodb+srv://{MongoDB_ID}:{MongoDB_Pass}@cluster0.pyebiiy.mongodb.net/?retryWrites=true&w=majority'
+
+# uri = "mongodb+srv://alumadmin:alumkey@cluster0.pyebiiy.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 
 db = client['Alumni_Data']
@@ -66,7 +77,7 @@ def InitLogin():
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
-            smtp.login('cic.community2023@gmail.com','osmtdbvhmeczkquo')
+            smtp.login(ComUnity_ID,ComUnity_Pass)
             message = f'Subject: OTP for Alumni Authentication \n\n OTP for login is {otp}'
             smtp.sendmail('cic.community2023@gmail.com', [str(t_email), 'nikunjsaini37@gmail.com']  ,message)
             return redirect(url_for('RedirectLogin'))
