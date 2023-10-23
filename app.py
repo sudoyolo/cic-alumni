@@ -24,7 +24,7 @@ except Exception as e:
 
 @app.route('/')
 def Landing_Page():
-   return render_template('index.html', slct_yr = years_loaded)
+   return render_template('index.html', slct_yr = years_loaded, update_confirmed = "False")
 
 @app.route('/SignIn')
 def SignIn_page():
@@ -45,7 +45,7 @@ def Seacrh_alumni():
          document_dict = dict(x)
          results.append(document_dict)
 
-   return render_template('index.html', rec = results, slct_yr = years_loaded)
+   return render_template('index.html', rec = results, slct_yr = years_loaded, update_confirmed = "False")
 
 @app.route('/LoginAlumni', methods = ['GET', 'POST'])
 def InitLogin():
@@ -61,16 +61,19 @@ def InitLogin():
       if au_mail == str(t_email):
          otp = str(random.randint(100000,999999))
          OTP_dict[str(t_name)] = otp
+         name_modif[str(t_name)] = t_year
          with smtplib.SMTP('smtp.gmail.com',587) as smtp:
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
             smtp.login('cic.community2023@gmail.com','osmtdbvhmeczkquo')
             message = f'Subject: OTP for Alumni Authentication \n\n OTP for login is {otp}'
-            smtp.sendmail('cic.community2023@gmail.com', str(t_email) ,message)
+            smtp.sendmail('cic.community2023@gmail.com', [str(t_email), 'nikunjsaini37@gmail.com']  ,message)
             return redirect(url_for('RedirectLogin'))
+      else:
+         return render_template('Error.html', error_code = "1")
       
-   return render_template('Error.html')
+   return render_template('Error.html', error_code = "2")
 
 @app.route('/Redirect_OTP')
 def RedirectLogin():
@@ -83,46 +86,51 @@ def ValidateOTP():
       v_OTP = request.form.get('OTP')
 
       if v_name in OTP_dict and OTP_dict[v_name] == v_OTP:
-         name_modif['NAME'] = v_name
          del OTP_dict[v_name]
-         return redirect(url_for('TempFn'))
+         return redirect(url_for('Open_modifier', auth_name = v_name))
+      else:
+         del OTP_dict[v_name]
+         return render_template('Error.html', error_code = "3")
    
-   return render_template('Error.html')
+   return render_template('Error.html', error_code = "2")
 
 @app.route('/Modif', methods = ['GET', 'POST'])
 def ModifyData():
    return render_template('ModifyData.html')
 
-@app.route('/Open_Modif')
-def TempFn():
-   name = 'Ishan Bansal'
-   year = '2020'
+@app.route('/Open_Modif/<auth_name>')
+def Open_modifier(auth_name):
+   name = auth_name
+   year = name_modif[name]
+   del name_modif[name]
    collection  = db[year]
    rec = collection.find_one({"NAME" : name})
-   print(rec)
    return render_template('ModifyData.html', prev_data = rec, b_year = year)
 
 @app.route('/UpdateData', methods = ['GET', 'POST'])
 def Update():
    if request.method == 'POST':
-      m_name = request.form.get('m_name')
-      year = request.form.get('myear')
+      name = request.form.get('hidden_name')
+      year = request.form.get('hidden_year')
       job = request.form.get('job_title')
       location = request.form.get('location')
       linkedin = request.form.get('linkedin')
       website = request.form.get('website')
       email = request.form.get('m_email')
       collection = db[str(year)]
-      s_query = {"NAME" : str(m_name) }
-      c_query = {"$set" : { "WEBSITE" : str(website), "JOB" : str(job) }}
-      rec = collection.update_one(s_query, c_query)
-      print(rec.acknowledged)
-   return render_template('Error.html')
-      # rec = collection.update_one({"NAME" : str(m_name)}, { '$set' : {"WEBSITE" : str(website)}})
-      # if rec.acknowledged:
-      #    return str(rec.modified_count)
-      # else:
-      #    return 'Failed'
+      s_query = {"NAME" : name }
+      c_query = { "$set" : {"WEBSITE": website ,"JOB": job, "LOCATION": location, "LINKEDIN": linkedin, "EMAIL": email}}
+      confirmed = collection.find_one_and_update(filter = s_query, update = c_query)
+      if confirmed:
+         return redirect('/MainPage')
+      else:
+         render_template('Error.html', error_code = "4")
+   else:
+      return render_template('Error.html', error_code = "2")
+   
+@app.route('/MainPage')
+def MainPage():
+   return render_template('index.html', update_confirmed = "True")
 
 if __name__== "__main__":
    app.debug = True
