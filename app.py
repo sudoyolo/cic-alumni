@@ -14,8 +14,6 @@ ComUnity_ID = Login_creds['mail_id']
 ComUnity_Pass = Login_creds['mail_pass']
 
 uri = f'mongodb+srv://{MongoDB_ID}:{MongoDB_Pass}@cluster0.pyebiiy.mongodb.net/?retryWrites=true&w=majority'
-
-# uri = "mongodb+srv://alumadmin:alumkey@cluster0.pyebiiy.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(uri)
 
 db = client['Alumni_Data']
@@ -49,12 +47,19 @@ def Seacrh_alumni():
       name = request.form.get('Alname')
       course = request.form.get('course')
       year = request.form.get('year')
-      print(name, course, year)
-      collection = db[str(year)]
-      allrec = collection.find({"COURSE" : str(course)}) 
-      for x in allrec:
-         document_dict = dict(x)
-         results.append(document_dict)
+      if name == "":
+         collection = db[str(year)]
+         allrec = collection.find({"COURSE" : str(course)}) 
+         for x in allrec:
+            document_dict = dict(x)
+            results.append(document_dict)
+      else:
+         collection = db[str(year)]
+         allrec = collection.find({"NAME" : str(name), "COURSE" : str(course)}) 
+         for x in allrec:
+            document_dict = dict(x)
+            results.append(document_dict)
+         
 
    return render_template('index.html', rec = results, slct_yr = years_loaded, update_confirmed = "False")
 
