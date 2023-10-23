@@ -330,16 +330,41 @@ select option{
 }
 /*---------------------- OTP Auth and Login ------------------------------------------*/
 .login-det-holder{
+    text-align: center;
     margin: auto;
-    width: fit-content;
-    border: 1px dashed black;
+    width: 40%;
 }
 .login-child{
-    padding: 5vh;
+    margin: auto;
+    width: 80%;
+    padding: 2vh;
+    margin-top: 1.5vh;
+    text-align: center;
 }
 .login-child input{
+    margin: auto;
     background-color: black;
     color: white;
+    width: 80%;
+    height: 4vh;
+}
+.login-child select{
+    width: 80%;
+    height: 4vh;
+}
+.Otp_auth {
+    width: 30%;
+    height: 4vh;
+    background-color: #652b7c;
+    color: white;
+    margin: 2vh;
+    border-radius: 10px;
+    font-size: 2.5vh;
+}
+.Otp_auth:hover{
+    background-color: white;
+    color: #652b7c;
+    border: 2px solid #652b7c;
 }
 /*----------------------------- Modify data---------------------------------------------*/
 .modif-data{
@@ -374,4 +399,15 @@ select option{
     background-color: white;
     color: #652b7c;
     border: 2px solid #652b7c;
+}
+/*----------------------------Error Page -----------------------*/
+.error-holder{
+    margin: auto;
+    width: 70%;
+    height: 70vh;
+    text-align: center;
+}
+.error-button{
+    background-color: #652b7c;
+    color: white;
 }
