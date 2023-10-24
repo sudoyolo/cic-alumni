@@ -17,15 +17,17 @@
         </ul>
     </div>
     <div class="modif-data">
-        <form action="/UpdateData" method="post">
+        <form action="/UpdateData" method="POST">
             <div class="modif-form-child">
                 <input type="text" name="m_name" value="{{ prev_data.NAME }}" disabled>
+                <input type="hidden" id="hidden_name" name="hidden_name" value="">
             </div>
             <div class="modif-form-child">
                 <input type="text" name="course" value="{{ prev_data.EMAIL }}" disabled>
             </div>
             <div class="modif-form-child">
-                <input type="number" name="myear" id="year" value="{{ b_year }}" disabled>
+                <input type="text" name="myear" id="year" value="{{ b_year }}" disabled>
+                <input type="hidden" name="hidden_year" id="hidden_year" value="">
             </div>
             <div class="modif-form-child">
                 <input type="text" name="job_title" value="{{ prev_data.JOB }}">
@@ -46,4 +48,13 @@
         </form>
     </div>
 </body>
+<script>
+ document.querySelector('form').addEventListener('submit', function(){
+    var DisabledName = document.querySelector('input[name = "m_name"]').value;
+    document.querySelector('input[name = "hidden_name"]').value = DisabledName;
+
+    var DisabledYear = document.querySelector('input[name = "myear"]').value;
+    document.querySelector('input[name = "hidden_year"]').value = DisabledYear;
+});
+</script>
 </html>
