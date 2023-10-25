@@ -146,7 +146,7 @@ def Update():
    
 @app.route('/MainPage')
 def MainPage():
-   return render_template('index.html', update_confirmed = "True")
+   return render_template('index.html', update_confirmed = "True", slct_yr = years_loaded)
 
 if __name__== "__main__":
    app.debug = True
