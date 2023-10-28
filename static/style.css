@@ -390,6 +390,12 @@ select option{
     width: 80%;
     height: 4vh;
 }
+.label-form{
+    margin-bottom: 0%;
+    margin-top: 0%;
+    text-align: left;
+    margin-left: 9%;
+}
 .update{
     width: 30%;
     height: 4vh;
@@ -403,6 +409,11 @@ select option{
     background-color: white;
     color: #652b7c;
     border: 2px solid #652b7c;
+}
+@media screen and (max-width: 700px) {
+    .modif-data{
+        width: 80%;
+    }
 }
 /*----------------------------Error Page -----------------------*/
 .error-holder{

@@ -44,7 +44,13 @@ def Seacrh_alumni():
    allrec = {}
    results = []
    if request.method == 'POST':
-      name = request.form.get('Alname')
+      name = ""
+      i_name = request.form.get('Alname')
+      i_name = i_name.lower()
+      name_array = i_name.split(" ")
+      for nms in name_array:
+         name = name + nms.capitalize() + " "
+      name = name.rstrip()
       course = request.form.get('course')
       year = request.form.get('year')
       if name == "":
@@ -67,7 +73,13 @@ def Seacrh_alumni():
 def InitLogin():
    au_mail = []
    if request.method == 'POST':
-      t_name = request.form.get('InpName')
+      t_name = ""
+      i_name = request.form.get('InpName')
+      i_name = i_name.lower()
+      name_array = i_name.split(" ")
+      for nms in name_array:
+         t_name = t_name + nms.capitalize() + " "
+      t_name = t_name.rstrip()
       t_email = request.form.get('InpEmail')
       t_year  = request.form.get('year')
       collection = db[str(t_year)]
@@ -98,7 +110,13 @@ def RedirectLogin():
 @app.route('/Validate_OTP', methods = ['GET', 'POST'])
 def ValidateOTP():
    if request.method == 'POST':
-      v_name = request.form.get('InpName')
+      v_name = ""
+      otp_auth_name = request.form.get('InpName')
+      otp_auth_name = otp_auth_name.lower()
+      name_array = otp_auth_name.split(" ")
+      for nms in name_array:
+         v_name = v_name + nms.capitalize() + " "
+      v_name = v_name.rstrip()
       v_OTP = request.form.get('OTP')
 
       if v_name in OTP_dict and OTP_dict[v_name] == v_OTP:

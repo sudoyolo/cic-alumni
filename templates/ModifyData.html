@@ -19,29 +19,37 @@
     <div class="modif-data">
         <form action="/UpdateData" method="POST">
             <div class="modif-form-child">
-                <input type="text" name="m_name" value="{{ prev_data.NAME }}" disabled>
+                <p class="label-form">Name</p>
+                <input type="text" id="m_name" name="m_name" value="{{ prev_data.NAME }}" disabled>
                 <input type="hidden" id="hidden_name" name="hidden_name" value="">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">Registered E-mail</p>
                 <input type="text" name="course" value="{{ prev_data.EMAIL }}" disabled>
             </div>
             <div class="modif-form-child">
+                <p class="label-form">Batch</p>
                 <input type="text" name="myear" id="year" value="{{ b_year }}" disabled>
                 <input type="hidden" name="hidden_year" id="hidden_year" value="">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">Occupation</p>
                 <input type="text" name="job_title" value="{{ prev_data.JOB }}">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">Workplace Location</p>
                 <input type="text" name="location" value="{{ prev_data.LOCATION }}">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">LinkedIn Profile</p>
                 <input type="text" name="linkedin" value="{{ prev_data.LINKEDIN }}">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">Portfolio Website</p>
                 <input type="text" name="website" value="{{ prev_data.WEBSITE }}">
             </div>
             <div class="modif-form-child">
+                <p class="label-form">New E-mail (If want to update)</p>
                 <input type="email" name="m_email" value="{{ prev_data.EMAIL }}">
             </div>
             <button class="update" type="submit">UPDATE</button>
