@@ -128,9 +128,13 @@ def ValidateOTP():
    
    return render_template('Error.html', error_code = "2")
 
-@app.route('/Modif', methods = ['GET', 'POST'])
-def ModifyData():
-   return render_template('ModifyData.html')
+# @app.route('/Modif', methods = ['GET', 'POST'])
+# def ModifyData():
+#    name = "Ishan Bansal"
+#    year = "2020"
+#    collection  = db[year]
+#    rec = collection.find_one({"NAME" : name})
+#    return render_template('ModifyData.html',prev_data = rec, b_year = year)
 
 @app.route('/Open_Modif/<auth_name>')
 def Open_modifier(auth_name):
