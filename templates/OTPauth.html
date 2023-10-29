@@ -9,13 +9,20 @@
     <link rel="shortcut icon" href="{{url_for('static', filename='logo.ico')}}" type="image/x-icon">
 </head>
 <body>
-    <div class="navbar">
-        <img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="/SignIn">Sign In</a></li>
-            <li class="nav-item"><a href="/">Home</a></li>
-        </ul>
-    </div>
+    <header>
+        <nav>
+            <div class="logo"><img src="{{url_for('static', filename='ciclogo.jpeg')}}" alt="CIC Logo"></div>
+            <ul class="nav-links">
+                <li><a href="/SignIn">Sign In</a></li>
+                <li><a href="https://cic.du.ac.in/">CIC Home</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
     <div class="login-div">
         <div class="login-det-holder">
             <form action="/Validate_OTP" method="POST">
